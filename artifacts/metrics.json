@@ -1,0 +1,107 @@
+{
+  "best_model_name": "hist_gradient_boosting",
+  "test_r2": 0.7854117234317989,
+  "test_rmse": 0.5550765500121078,
+  "test_mae": 0.47836416072595855,
+  "train_rows": 40000,
+  "test_rows": 10000,
+  "features": [
+    "Age",
+    "Year",
+    "Genetic_Risk",
+    "Air_Pollution",
+    "Alcohol_Use",
+    "Smoking",
+    "Obesity_Level",
+    "Gender",
+    "Country_Region",
+    "Cancer_Type",
+    "Cancer_Stage"
+  ],
+  "target": "Target_Severity_Score",
+  "top_features": [
+    {
+      "feature": "Smoking",
+      "importance_mean": 0.4657594581243434,
+      "importance_std": 0.005157582228440142
+    },
+    {
+      "feature": "Genetic_Risk",
+      "importance_mean": 0.45692219592101596,
+      "importance_std": 0.005740011880615025
+    },
+    {
+      "feature": "Air_Pollution",
+      "importance_mean": 0.26077278521784186,
+      "importance_std": 0.002085745478517399
+    },
+    {
+      "feature": "Alcohol_Use",
+      "importance_mean": 0.2556986359915919,
+      "importance_std": 0.005204121146166989
+    },
+    {
+      "feature": "Obesity_Level",
+      "importance_mean": 0.11346837470228299,
+      "importance_std": 0.002419299838016409
+    },
+    {
+      "feature": "Cancer_Stage",
+      "importance_mean": 3.6596723119078356e-05,
+      "importance_std": 3.777877662188522e-05
+    },
+    {
+      "feature": "Year",
+      "importance_mean": 2.314000361346158e-05,
+      "importance_std": 6.118507936550088e-05
+    },
+    {
+      "feature": "Gender",
+      "importance_mean": 9.731080249347768e-06,
+      "importance_std": 3.0142616411518396e-05
+    },
+    {
+      "feature": "Country_Region",
+      "importance_mean": -1.9712525911000367e-05,
+      "importance_std": 3.693585493756912e-05
+    },
+    {
+      "feature": "Age",
+      "importance_mean": -2.9820788562007206e-05,
+      "importance_std": 8.32941714758521e-05
+    },
+    {
+      "feature": "Cancer_Type",
+      "importance_mean": -4.546571120388199e-05,
+      "importance_std": 4.691044168325918e-05
+    }
+  ],
+  "cv_summary": {
+    "hist_gradient_boosting": {
+      "cv_r2_mean": 0.7859599947349099,
+      "cv_r2_std": 0.0034225844473352285,
+      "cv_mae_mean": 0.47827451852043845,
+      "cv_rmse_mean": 0.5550579264870596
+    },
+    "random_forest": {
+      "cv_r2_mean": 0.7742310762954079,
+      "cv_r2_std": 0.0035686435327295716,
+      "cv_mae_mean": 0.487296671098723,
+      "cv_rmse_mean": 0.5700667399643735
+    },
+    "extra_trees": {
+      "cv_r2_mean": 0.774953694959698,
+      "cv_r2_std": 0.003509064701837808,
+      "cv_mae_mean": 0.48670882602777776,
+      "cv_rmse_mean": 0.5691541942253208
+    }
+  },
+  "best_params": {
+    "model__min_samples_leaf": 10,
+    "model__max_leaf_nodes": 31,
+    "model__max_iter": 500,
+    "model__learning_rate": 0.03,
+    "model__l2_regularization": 0.01
+  },
+  "data_path": "C:\\Users\\HP\\Downloads\\global_cancer_patients_2015_2024 (11).csv"
+}

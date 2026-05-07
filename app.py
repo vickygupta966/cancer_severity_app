@@ -108,7 +108,7 @@ def build_input_row() -> pd.DataFrame:
     smoking = st.sidebar.slider("Smoking", 0.0, 10.0, 5.0, 0.1)
     obesity = st.sidebar.slider("Obesity Level", 0.0, 10.0, 5.0, 0.1)
 
-    # Create DataFrame with correct column order
+    # Create DataFrame with ALL 11 features
     input_data = {
         "Age": age,
         "Gender": gender,
@@ -120,10 +120,11 @@ def build_input_row() -> pd.DataFrame:
         "Smoking": smoking,
         "Obesity_Level": obesity,
         "Cancer_Type": cancer_type,
-        "Cancer_Stage": cancer_stage,
+        "Cancer_Stage": cancer_stage,  # Make sure this is included!
     }
     
-    return pd.DataFrame([input_data])
+    df = pd.DataFrame([input_data])
+    return df[FEATURES]  # This ensures all 11 columns in correct order
 
 
 def predict(model, row: pd.DataFrame, mode: str) -> float:

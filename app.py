@@ -130,21 +130,12 @@ def predict(model, row: pd.DataFrame, mode: str) -> float:
     """Make prediction with proper data handling"""
     try:
         if mode == "advanced":
-            # For advanced model (pipeline with preprocessing)
-            # Create a clean copy
-            X_input = row.copy()
+            # Create a clean copy with the correct column order
+            X_input = row[FEATURES].copy()
             
-            # Ensure all expected columns are present
-            for col in FEATURES:
-                if col not in X_input.columns:
-                    raise ValueError(f"Missing column: {col}")
-            
-            # Make prediction - try different formats if needed
-            try:
-                prediction = model.predict(X_input)[0]
-            except:
-                # Fallback: try using .values for numpy array
-                prediction = model.predict(X_input[FEATURES].values)[0]
+            # The pipeline expects a DataFrame with column names
+            # Pass the DataFrame directly, not numpy array
+            prediction = model.predict(X_input)[0]
             
             return float(np.clip(prediction, 0, 10))
 
@@ -200,6 +191,10 @@ def predict(model, row: pd.DataFrame, mode: str) -> float:
         st.write("Debug Info:")
         st.write(f"- Mode: {mode}")
         st.write(f"- Input columns: {list(row.columns)}")
+        if mode == "advanced":
+            st.write(f"- Model type: {type(model)}")
+            if hasattr(model, 'named_steps'):
+                st.write(f"- Pipeline steps: {list(model.named_steps.keys())}")
         raise
 
 
